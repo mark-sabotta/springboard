@@ -1,0 +1,6 @@
+const PI = 3.14;
+
+1. var is hoisted, var can be redeclared
+2. var is hoisted, var can be redeclared, var can be reassigned
+3. let can be reassigned
+4. hoisting is when declared variables are intialized before the code runs
