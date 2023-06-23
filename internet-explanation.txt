@@ -1,0 +1,9 @@
+1. HTTP is hypertext transfer protocol. It is the set of instructions used to make sure information is sent to and received from servers in a way that users and browsers understand.
+2. URL is a uniform resource locator. It tells browsers where to look for webpages and data
+3. DNS is a domain name system. The domain tends to be the name of a website it helps tell the browser where to find that information using the associated IP Address.
+4. A query string is a set of characters used to filter data requested from an API
+5. GET is a request for the data/webpage. POST is a request to send data to the server for storage.
+6. An http request is user to server communication
+7. An http response is server to user communication
+8. HTTP headers communicate what the request/response is about. Request headers include Host and Cookie. Response headers include Set-Cookie.
+9. When you type “http://somesite.com/some/page.html”  into your browser; a request is sent to your router. Your router directs your request to the somesite server. If an error is not thrown, the somesite server sends the result of your request back and your browser reads it to you.
