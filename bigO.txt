@@ -1,0 +1,32 @@
+O(n)
+O(n)
+O(1)
+O(n^3)
+O(n)
+O(n)
+O(n*logn)
+O(2^n)
+O(1)
+O(n^2)
+
+O(n) (console log up to n)
+O(n) (log at least 10)
+O(1) (log at most 10)
+O(n) (log elements at even)
+O(n^2) (subtotal)
+O(n) (vowelCount) //note: "7: if(char in vowelCount)" will do at most 5 checks, not n checks
+
+true
+true
+false (n^2)
+O(n)
+O(n)
+O(kn) where k is the order of the forEach callback function
+O(nlogn) I hope
+O(n)
+O(1)
+O(n)
+O(1)
+O(n)
+
+O(n)
