@@ -104,7 +104,7 @@ async function submitNewStory(e) {
 $submitForm.on("submit", submitNewStory);
 
 function putUserStoriesOnPage() {
-  console.debug("putUserStoriesONPage");
+  console.debug("putUserStoriesOnPage");
 
   $ownStories.empty();
 
@@ -121,7 +121,7 @@ function putUserStoriesOnPage() {
 }
 
 function putFavoritesList() {
-  console.debur("putFavoritesList");
+  console.debug("putFavoritesList");
 
   $favoritedStories.empty();
 

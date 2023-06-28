@@ -30,12 +30,12 @@ function navFavoritesClick(e) {
   putFavoritesList();
 }
 
-$body.on("click", "nav-favorites", navFavoritesClick);
+$body.on("click", "#nav-favorites", navFavoritesClick);
 
 function navMyStories(e) {
   console.debug("navMyStories", e);
   hidePageComponents();
-  putUserStories();
+  putUserStoriesOnPage();
   $ownStories.show();
 }
 
