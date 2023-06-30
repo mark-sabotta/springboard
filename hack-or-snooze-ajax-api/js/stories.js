@@ -22,16 +22,14 @@ async function getAndShowStoriesOnStart() {
 function generateStoryMarkup(story, showDeleteBtn = false) {
   // console.debug("generateStoryMarkup", story);
 
-  const hostName = story.getHostName();
-  const showFav = Boolean(currentUser);
   return $(`
       <li id="${story.storyId}">
       ${showDeleteBtn ? getDeleteBtn() : ""}
-      ${showFav ? getFavHTML(story, currentUser) : ""}
+      ${Boolean(currentUser) ? getFavHTML(story, currentUser) : ""}
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
-        <small class="story-hostname">(${hostName})</small>
+        <small class="story-hostname">(${story.getHostName()})</small>
         <small class="story-author">by ${story.author}</small>
         <small class="story-user">posted by ${story.username}</small>
       </li>

@@ -24,8 +24,7 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // UNIMPLEMENTED: complete this function!
-    return new URL(this.url).host;
+    return new URL(this.url).hostname;
   }
 }
 
@@ -75,15 +74,13 @@ class StoryList {
 
   async addStory(user, newStory) {
     const response = await axios({
-      method:"POST",
+      method: "POST",
       url: `${BASE_URL}/stories`,
-      data: {token: user.loginToken,
-        story: {title: newStory.title,
-                author: newStory.author,
-                url: newStory.url
-              }
-    },
-  });
+      data: {
+        token: user.loginToken,
+        story: newStory
+      },
+    });
 
     const story = new Story(response.data.story);
     this.stories.unshift(story);
@@ -93,23 +90,24 @@ class StoryList {
   }
 
 
-//Delete story
+  //Delete story
 
   async removeStory(user, storyId) {
     await axios({
+      //catch status not 200
       url: `${BASE_URL}/stories/${storyId}`,
       method: "DELETE",
-      data: {token: user.loginToken},
+      data: { token: user.loginToken },
     });
 
-    this.stories = this.stories.filter(function(val){ 
+    this.stories = this.stories.filter(function (val) {
       return val.storyId !== storyId
     });
 
-    user.ownStories = user.ownStories.filter(function(val){
+    user.ownStories = user.ownStories.filter(function (val) {
       return val.storyId !== storyId;
     });
-    user.favorites = user.favorites.filter(function(val){
+    user.favorites = user.favorites.filter(function (val) {
       return val.storyId !== storyId;
     });
   }
@@ -127,13 +125,13 @@ class User {
    */
 
   constructor({
-                username,
-                name,
-                createdAt,
-                favorites = [],
-                ownStories = []
-              },
-              token) {
+    username,
+    name,
+    createdAt,
+    favorites = [],
+    ownStories = []
+  },
+    token) {
     this.username = username;
     this.name = name;
     this.createdAt = createdAt;
@@ -233,30 +231,30 @@ class User {
 
 
 
-async addFavorite(story) {
-  this.favorites.push(story);
-  await this._addOrRemoveFavorite("add", story);
-}
+  async addFavorite(story) {
+    this.favorites.push(story);
+    await this._addOrRemoveFavorite("add", story);
+  }
 
-async removeFavorite(story) {
-  this.favorites = this.favorites.filter(function(val) {
-    return val.storyId !== story.storyId;
-  });
-  await this._addOrRemoveFavorite("remove", story);
-}
+  async removeFavorite(story) {
+    this.favorites = this.favorites.filter(function (val) {
+      return val.storyId !== story.storyId;
+    });
+    await this._addOrRemoveFavorite("remove", story);
+  }
 
-async _addOrRemoveFavorite(mode, story){
-  const method = mode === "add" ? "POST" : "DELETE";
-  const token = this.loginToken;
-  await axios({
-    url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
-    method: method,
-    data: {token},
-  });
-}
+  async _addOrRemoveFavorite(mode, story) {
+    const method = mode === "add" ? "POST" : "DELETE";
+    const token = this.loginToken;
+    await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      method: method,
+      data: { token },
+    });
+  }
 
-isFavorite(story) {
-  return this.favorites.some(val => (val.storyId === story.storyId));
-}
+  isFavorite(story) {
+    return this.favorites.some(val => (val.storyId === story.storyId));
+  }
 
 }
