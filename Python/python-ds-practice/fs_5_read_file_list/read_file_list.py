@@ -16,6 +16,12 @@ def read_file_list(filename):
     It will raise an error if the file cannot be found.
     """
 
-    # hint: when you read lines of files, there will be a "newline"
-    # (end-of-line character) at the end of each line, and you want to
-    # strip that off before you print it. Do some research on that!
+
+
+    with open(filename) as f:
+        for line in f:
+            newline = line.strip()
+            print(f"-{newline}")
+
+
+print(read_file_list("/Users/puff/Documents/c0d3/Springboard/Python/python-ds-practice/fs_5_read_file_list/cats"))
