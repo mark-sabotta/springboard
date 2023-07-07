@@ -32,13 +32,3 @@ def is_odd_string(word):
         if ord(char)%2 == 1:
             odd = not odd
     return odd
-
-print(is_odd_string('a'))
-
-print(is_odd_string('A'))
-
-print(is_odd_string('aaaa'))
-
-print(is_odd_string('AAaa'))
-
-print(is_odd_string('amazing'))
